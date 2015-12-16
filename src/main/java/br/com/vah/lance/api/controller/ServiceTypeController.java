@@ -12,26 +12,26 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
-import br.com.vah.lance.api.model.Supplier;
-import br.com.vah.lance.api.service.SupplierService;
+import br.com.vah.lance.api.model.ServiceType;
+import br.com.vah.lance.api.service.ServiceTypeService;
 import br.com.vah.lance.api.service.utils.Filter;
 import br.com.vah.lance.api.service.utils.FilterType;
 
 @Controller
-@Path("suppliers")
-public class SupplierController implements Serializable {
+@Path("serviceTypes")
+public class ServiceTypeController implements Serializable {
 
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Inject private SupplierService service;
+	@Inject private ServiceTypeService service;
     @Inject private Result result;
 
     @Get("list")
     public void list() {
-        result.use(json()).from(service.findAll(), "suppliers").serialize();
+        result.use(json()).from(service.findAll(), "serviceTypes").serialize();
     }
 
     @Get("{id}")
@@ -42,12 +42,12 @@ public class SupplierController implements Serializable {
     @Consumes("application/json")
     @Post("filter")
     public void get(String title) {
-        result.use(json()).from(service.filter(new Filter("title",FilterType.LIKE,title)),"suppliers").serialize();
+        result.use(json()).from(service.filter(new Filter("title",FilterType.LIKE,title)),"serviceTypes").serialize();
     }
 
     @Consumes("application/json")
     @Post("add")
-    public void add(Supplier supplier) {
-        result.use(json()).from(service.persist(supplier)).serialize();
+    public void add(ServiceType serviceTypes) {
+    	result.use(json()).from(service.persist(serviceTypes)).serialize();
     }
 }

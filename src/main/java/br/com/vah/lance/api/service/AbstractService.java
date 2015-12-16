@@ -37,8 +37,10 @@ public abstract class AbstractService<T extends Serializable> {
 	 * 
 	 * @param entity
 	 */
-	public void persist(T entity) {
+	public T persist(T entity) {
 		em.persist(entity);
+		em.flush();
+		return entity;
 	}
 
 	/**
