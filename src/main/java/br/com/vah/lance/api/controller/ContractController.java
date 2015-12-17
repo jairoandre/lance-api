@@ -16,6 +16,8 @@ import br.com.vah.lance.api.controller.utils.EnumMessages;
 import br.com.vah.lance.api.controller.utils.MessageJson;
 import br.com.vah.lance.api.model.Contract;
 import br.com.vah.lance.api.service.ContractService;
+import br.com.vah.lance.api.service.utils.Filter;
+import br.com.vah.lance.api.service.utils.FilterType;
 
 
 @Controller
@@ -44,11 +46,17 @@ public class ContractController implements Serializable {
     	}
     	result.use(json()).from(objToJson).serialize();
     }
+    
+    @Consumes("application/json")
+    @Post("filter")
+    public void get(String title) {
+        result.use(json()).from(service.filter(new Filter("title",FilterType.LIKE,title)),"contracts").serialize();
+    }
 
     @Consumes("application/json")
     @Post("add")
-    public void add(Contract entity) {
-    	service.persist(entity);
-        result.redirectTo(this).list();
+    public void add(Contract contract) {
+    	result.use(json()).from(service.persist(contract)).serialize();
     }
+    
 }

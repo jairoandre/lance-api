@@ -136,5 +136,17 @@ public abstract class AbstractService<T extends Serializable> {
 		
 		return em.createQuery(query).getResultList();
 	}
+	
+	/**
+	 * 
+	 * @param entity
+	 * @return
+	 */
+	public T remove(Long id) {
+		T entity = load(id);
+		em.remove(entity);
+		em.flush();
+		return entity;
+	}
 
 }

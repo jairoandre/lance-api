@@ -47,7 +47,13 @@ public class ServiceTypeController implements Serializable {
 
     @Consumes("application/json")
     @Post("add")
-    public void add(ServiceType serviceTypes) {
-    	result.use(json()).from(service.persist(serviceTypes)).serialize();
+    public void add(ServiceType serviceType) {
+    	result.use(json()).from(service.persist(serviceType)).serialize();
+    }
+    
+    @Consumes("application/json")
+    @Post("remove")
+    public void remove(Long id) {
+    	result.use(json()).from(service.remove(id)).serialize();
     }
 }
