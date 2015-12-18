@@ -23,7 +23,7 @@ public class Service implements Serializable {
 	@Id
 	@SequenceGenerator(name = "seqServiceGenerator", sequenceName = "SEQ_TB_LANCA_SERVICO", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqServiceGenerator")
-	@Column(name="ID_SERVICO")
+	@Column(name="ID")
 	private Long id;
 	@Column(name="CD_HISTORICO_PADRAO")
 	private Integer defaultHistory;
@@ -35,7 +35,7 @@ public class Service implements Serializable {
 	private Integer resultAccount;
 	@Column(name="CD_CONTA_CUSTO")
 	private Integer costAccount;
-	@Column(name="DESCRICAO")
+	@Column(name="NM_TITULO")
 	private String title;
 	@ManyToOne
 	@JoinColumn(name="ID_TP_SERVICO", nullable=false)

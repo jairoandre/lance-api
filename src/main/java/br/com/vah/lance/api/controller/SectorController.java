@@ -40,7 +40,12 @@ public class SectorController implements Serializable {
     @Consumes("application/json")
     @Post("add")
     public void add(Sector sector) {
-        service.persist(sector);
-        result.redirectTo(this).list();
+    	result.use(json()).from(service.persist(sector)).serialize();
+    }
+    
+    @Consumes("application/json")
+    @Post("remove")
+    public void remove(Long id) {
+    	result.use(json()).from(service.remove(id)).serialize();
     }
 }

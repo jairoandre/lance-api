@@ -24,10 +24,10 @@ public class Contract implements Serializable {
 	@Id
 	@SequenceGenerator(name = "seqContractGenerator", sequenceName = "SEQ_TB_LANCA_CONTRATO", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqContractGenerator")
-	@Column(name = "ID_CONTRATO")
+	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "DESCRICAO")
+	@Column(name = "NM_TITULO")
 	private String title;
 
 	@Temporal(TemporalType.DATE)

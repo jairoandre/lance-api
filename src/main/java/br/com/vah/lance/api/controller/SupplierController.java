@@ -50,4 +50,10 @@ public class SupplierController implements Serializable {
     public void add(Supplier supplier) {
         result.use(json()).from(service.persist(supplier)).serialize();
     }
+    
+    @Consumes("application/json")
+    @Post("remove")
+    public void remove(Long id) {
+    	result.use(json()).from(service.remove(id)).serialize();
+    }
 }

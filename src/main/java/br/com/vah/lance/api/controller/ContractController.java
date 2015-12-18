@@ -58,5 +58,11 @@ public class ContractController implements Serializable {
     public void add(Contract contract) {
     	result.use(json()).from(service.persist(contract)).serialize();
     }
+
+    @Consumes("application/json")
+    @Post("remove")
+    public void remove(Long id) {
+    	result.use(json()).from(service.remove(id)).serialize();
+    }
     
 }

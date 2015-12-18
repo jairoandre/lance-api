@@ -31,23 +31,29 @@ public class ServiceController implements Serializable {
 
     @Get("list")
     public void list() {
-        result.use(json()).from(service.findAll(), "services").serialize();
+        result.use(json()).from(service.findAll(), "services").include("serviceType").serialize();
     }
 
     @Get("{id}")
     public void get(Long id) {
-        result.use(json()).from(service.load(id)).serialize();
+        result.use(json()).from(service.load(id)).include("serviceType").serialize();
     }
     
     @Consumes("application/json")
     @Post("filter")
     public void get(String title) {
-        result.use(json()).from(service.filter(new Filter("title",FilterType.LIKE,title)),"services").serialize();
+        result.use(json()).from(service.filter(new Filter("title",FilterType.LIKE,title)),"services").include("serviceType").serialize();
     }
 
     @Consumes("application/json")
     @Post("add")
     public void add(Service serv) {
-    	result.use(json()).from(service.persist(serv)).serialize();
+    	result.use(json()).from(service.persist(serv)).include("serviceType").serialize();
+    }
+    
+    @Consumes("application/json")
+    @Post("remove")
+    public void remove(Long id) {
+    	result.use(json()).from(service.remove(id)).include("serviceType").serialize();
     }
 }

@@ -19,11 +19,11 @@ public class Supplier implements Serializable {
 	@Id
 	@SequenceGenerator(name = "seqSupplierGenerator", sequenceName = "SEQ_TB_LANCA_CLIENTE", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqSupplierGenerator")
-	@Column(name = "ID_CLIENTE")
+	@Column(name = "ID")
 	private Long id;
 	@Column(name = "CD_FORNECEDOR")
 	private Integer supplierCode;
-	@Column(name = "DESCRICAO")
+	@Column(name = "NM_TITULO")
 	private String title;
 
 	public Supplier() {

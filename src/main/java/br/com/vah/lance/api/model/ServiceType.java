@@ -23,7 +23,7 @@ public class ServiceType implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqServiceTypeGenerator")
 	@Column(name="ID")
 	private Long id;
-	@Column(name = "DESCRICAO")
+	@Column(name = "NM_TITULO")
 	private String title;
 	
 	public Long getId() {

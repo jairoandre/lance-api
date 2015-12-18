@@ -27,14 +27,14 @@ public class Sector implements Serializable {
 	@Id
 	@SequenceGenerator(name = "seqSectorGenerator", sequenceName = "SEQ_TB_LANCA_SETOR", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqSectorGenerator")
-	@Column(name = "ID_SETOR")
+	@Column(name = "ID")
 	private Long id;
-	@Column(name = "AREA")
+	@Column(name = "VL_AREA")
 	private Double area;
 	@Lob
-	@Column(name = "DETALHES_SETOR")
+	@Column(name = "LO_DETALHES")
 	private String details;
-	@Column(name = "NM_SETOR")
+	@Column(name = "NM_TITULO")
 	private String name;
 	@ManyToMany
 	@JoinTable(name = "TB_LANCA_CLIENTE_SETOR", joinColumns = {
