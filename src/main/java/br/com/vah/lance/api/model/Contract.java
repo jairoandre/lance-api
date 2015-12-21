@@ -32,7 +32,7 @@ public class Contract implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DT_FINAL")
-	private Date finalDate;
+	private Date endDate;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DT_INICIO")
@@ -78,16 +78,16 @@ public class Contract implements Serializable {
 	/**
 	 * @return the finalDate
 	 */
-	public Date getFinalDate() {
-		return finalDate;
+	public Date getEndDate() {
+		return endDate;
 	}
 
 	/**
 	 * @param finalDate
 	 *            the finalDate to set
 	 */
-	public void setFinalDate(Date finalDate) {
-		this.finalDate = finalDate;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	/**

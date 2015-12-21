@@ -38,8 +38,8 @@ public class Sector implements Serializable {
 	private String name;
 	@ManyToMany
 	@JoinTable(name = "TB_LANCA_CLIENTE_SETOR", joinColumns = {
-			@JoinColumn(name = "EMP_ID", referencedColumnName = "ID") }, inverseJoinColumns = {
-					@JoinColumn(name = "PROJ_ID", referencedColumnName = "ID") })
+			@JoinColumn(name = "ID_SETOR", referencedColumnName = "ID") }, inverseJoinColumns = {
+					@JoinColumn(name = "ID_CLIENTE", referencedColumnName = "ID") })
 	private List<Supplier> suppliers;
 
 	public Sector() {}

@@ -14,6 +14,8 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.vah.lance.api.model.Sector;
 import br.com.vah.lance.api.service.SectorService;
+import br.com.vah.lance.api.service.utils.Filter;
+import br.com.vah.lance.api.service.utils.FilterType;
 
 @Controller
 @Path("sectors")
@@ -35,6 +37,12 @@ public class SectorController implements Serializable {
     @Get("{id}")
     public void get(Long id) {
         result.use(json()).from(service.load(id)).serialize();
+    }
+
+    @Consumes("application/json")
+    @Post("filter")
+    public void get(String name) {
+        result.use(json()).from(service.filter(new Filter("name",FilterType.LIKE,name)),"sectors").serialize();
     }
 
     @Consumes("application/json")
