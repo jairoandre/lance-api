@@ -35,7 +35,7 @@ public class ContractController implements Serializable {
 
     @Get("list")
     public void list() {
-		result.use(json()).from(service.findAll(), "contracts").serialize();
+		result.use(json()).from(service.findAll(), "contracts").include("supplier","services","services.service").serialize();
     }
 
     @Get("{id}")
@@ -50,7 +50,7 @@ public class ContractController implements Serializable {
     @Consumes("application/json")
     @Post("filter")
     public void get(String title) {
-        result.use(json()).from(service.filter(new Filter("title",FilterType.LIKE,title)),"contracts").serialize();
+        result.use(json()).from(service.filter(new Filter("title",FilterType.LIKE,title)),"contracts").include("supplier","services","services.service").serialize();
     }
 
     @Consumes("application/json")

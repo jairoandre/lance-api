@@ -2,12 +2,18 @@ package br.com.vah.lance.api.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -41,6 +47,13 @@ public class Contract implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DT_REAJUSTE")
 	private Date changeDate;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_CLIENTE", nullable=false)
+	private Supplier supplier;
+	
+	@OneToMany(mappedBy = "contract", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private List<ServiceContract> services;
 
 	public Contract() {
 	}
@@ -118,6 +131,36 @@ public class Contract implements Serializable {
 	 */
 	public void setChangeDate(Date changeDate) {
 		this.changeDate = changeDate;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	/**
+	 * 
+	 * @param supplier
+	 */
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+
+	/**
+	 * @return the services
+	 */
+	public List<ServiceContract> getServices() {
+		return services;
+	}
+
+	/**
+	 * @param services the services to set
+	 */
+	public void setServices(List<ServiceContract> services) {
+		this.services = services;
 	}
 
 	@Override
